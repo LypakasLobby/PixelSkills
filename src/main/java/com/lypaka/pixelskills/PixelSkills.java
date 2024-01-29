@@ -4,8 +4,7 @@ import com.lypaka.lypakautils.ConfigurationLoaders.BasicConfigManager;
 import com.lypaka.lypakautils.ConfigurationLoaders.ConfigUtils;
 import com.lypaka.lypakautils.ConfigurationLoaders.PlayerConfigManager;
 import com.lypaka.pixelskills.Config.ConfigGetters;
-import com.lypaka.pixelskills.Config.SkillGetters;
-import com.lypaka.pixelskills.SkillRegistry.Skill;
+import com.lypaka.pixelskills.Skills.Skill;
 import net.minecraftforge.fml.common.Mod;
 import ninja.leaping.configurate.objectmapping.ObjectMappingException;
 import org.apache.logging.log4j.LogManager;
@@ -44,19 +43,7 @@ public class PixelSkills {
         playerConfigManager = new PlayerConfigManager("account.conf", "player-accounts", dir, PixelSkills.class, MOD_NAME, MOD_ID, logger);
         playerConfigManager.init();
         ConfigGetters.load();
-        for (String skillString : ConfigGetters.enabledSkills) {
 
-            String lowerSkill = skillString.toLowerCase();
-            String[] skillFiles = new String[]{lowerSkill + "Settings.conf", lowerSkill + "LevelUps.conf", lowerSkill + "Rewards.conf"};
-            Path skillDir = ConfigUtils.checkDir(dir.resolve(skillString));
-            BasicConfigManager bcm = new BasicConfigManager(skillFiles, skillDir, PixelSkills.class, MOD_NAME, MOD_ID, logger);
-            bcm.init();
-            Skill skill = new Skill(skillString, configManager.getConfigNode(0, "Skills", skillString, "Access-Permission").getString(), bcm);
-            skillConfigManager.put(skillString, skill);
-
-        }
-
-        SkillGetters.load();
         loadRegionalLists();
 
     }

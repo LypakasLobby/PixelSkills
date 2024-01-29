@@ -1,6 +1,6 @@
 package com.lypaka.pixelskills.API;
 
-import com.lypaka.pixelskills.SkillRegistry.Skill;
+import com.lypaka.pixelskills.Skills.Skill;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraftforge.eventbus.api.Event;
 

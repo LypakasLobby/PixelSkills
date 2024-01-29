@@ -5,12 +5,13 @@ import com.lypaka.pixelskills.PixelSkills;
 import ninja.leaping.configurate.objectmapping.ObjectMappingException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ConfigGetters {
 
-    public static List<String> enabledSkills = new ArrayList<>();
+    public static Map<String, Boolean> skills = new HashMap<>();
 
     public static String bossBarColor;
     public static String bossBarEXP;
@@ -33,12 +34,7 @@ public class ConfigGetters {
         for (Map.Entry<String, Map<String, String>> entry : skillsMap.entrySet()) {
 
             boolean enabled = Boolean.parseBoolean(entry.getValue().get("Enabled"));
-            if (enabled) {
-
-                String skillName = entry.getKey();
-                enabledSkills.add(skillName);
-
-            }
+            skills.put(entry.getKey(), enabled);
 
         }
 
@@ -61,7 +57,14 @@ public class ConfigGetters {
 
     public static boolean isSkillEnabled (String skill) {
 
-        return enabledSkills.contains(skill);
+        boolean enabled = false;
+        if (skills.containsKey(skill)) {
+
+            enabled = skills.get(skill);
+
+        }
+
+        return enabled;
 
     }
 

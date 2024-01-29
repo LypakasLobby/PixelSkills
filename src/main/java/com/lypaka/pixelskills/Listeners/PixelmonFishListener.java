@@ -6,7 +6,7 @@ import com.lypaka.pixelskills.Config.ConfigGetters;
 import com.lypaka.pixelskills.Config.SkillGetters;
 import com.lypaka.pixelskills.PixelSkills;
 import com.lypaka.pixelskills.PlayerAccounts.Account;
-import com.lypaka.pixelskills.SkillRegistry.Skill;
+import com.lypaka.pixelskills.Skills.Skill;
 import com.pixelmonmod.pixelmon.api.events.FishingEvent;
 import com.pixelmonmod.pixelmon.entities.pixelmon.PixelmonEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -32,7 +32,7 @@ public class PixelmonFishListener {
 
         if (SkillGetters.fishermanBlacklist.contains(pokemon.getPokemonName())) return;
 
-        double exp = skill.getSettings().getEXPPerTask();
+        double exp = skill.getEXPPerTask();
         if (SkillGetters.fishermanWhitelist.containsKey(pokemon.getPokemonName())) {
 
             exp = SkillGetters.fishermanWhitelist.get(pokemon.getPokemonName());

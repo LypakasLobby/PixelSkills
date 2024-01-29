@@ -7,8 +7,8 @@ import com.lypaka.pixelskills.Config.ConfigGetters;
 import com.lypaka.pixelskills.Config.SkillGetters;
 import com.lypaka.pixelskills.Listeners.JoinListener;
 import com.lypaka.pixelskills.PixelSkills;
-import com.lypaka.pixelskills.SkillRegistry.Skill;
-import com.lypaka.pixelskills.SkillRegistry.SkillReward;
+import com.lypaka.pixelskills.Skills.Skill;
+import com.lypaka.pixelskills.Skills.SkillReward;
 import com.pixelmonmod.pixelmon.api.util.helpers.RandomHelper;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraftforge.common.MinecraftForge;
@@ -88,9 +88,9 @@ public class Account {
     public int getLevel (Skill skill) {
 
         int level = 0;
-        if (this.infoMap.containsKey(skill.getSkillName())) {
+        if (this.infoMap.containsKey(skill.getSkillID())) {
 
-            level = Integer.parseInt(this.infoMap.get(skill.getSkillName()).get("Level"));
+            level = Integer.parseInt(this.infoMap.get(skill.getSkillID()).get("Level"));
 
         }
 
@@ -100,7 +100,7 @@ public class Account {
 
     public void setLevel (Skill skill, int level) {
 
-        this.infoMap.get(skill.getSkillName()).put("Level", String.valueOf(level));
+        this.infoMap.get(skill.getSkillID()).put("Level", String.valueOf(level));
 
     }
 
@@ -120,9 +120,9 @@ public class Account {
     public double getEXP (Skill skill) {
 
         double exp = 0;
-        if (this.infoMap.containsKey(skill.getSkillName())) {
+        if (this.infoMap.containsKey(skill.getSkillID())) {
 
-            exp = Double.parseDouble(this.infoMap.get(skill.getSkillName()).get("EXP"));
+            exp = Double.parseDouble(this.infoMap.get(skill.getSkillID()).get("EXP"));
 
         }
 
@@ -132,14 +132,14 @@ public class Account {
 
     public void setEXP (Skill skill, double exp) {
 
-        this.infoMap.get(skill.getSkillName()).put("EXP", String.valueOf(exp));
+        this.infoMap.get(skill.getSkillID()).put("EXP", String.valueOf(exp));
 
     }
 
     public void awardEXP (Skill skill, double gained) {
 
         double current = 0;
-        String skillName = skill.getSkillName();
+        String skillName = skill.getSkillID();
         Map<String, String> skillInfoMap = new HashMap<>();
         if (this.infoMap.containsKey(skillName)) {
 
@@ -253,7 +253,7 @@ public class Account {
     public void attemptEXPReward (Skill skill, int playerLevel) {
 
         SkillReward reward = null;
-        boolean multiple = skill.getSettings().allowsMultipleRewards();
+        boolean multiple = skill.doesMultipleRewards();
         List<SkillReward> rewardsToGive = new ArrayList<>();
         for (SkillReward sr : skill.getRewards()) {
 
@@ -377,7 +377,7 @@ public class Account {
 
         SkillReward reward = null;
         int difference = endingLevel - startingLevel;
-        boolean multiple = skill.getSettings().allowsMultipleRewards();
+        boolean multiple = skill.doesMultipleRewards();
         List<SkillReward> rewardsToGive = new ArrayList<>();
         for (SkillReward sr : skill.getRewards()) {
 

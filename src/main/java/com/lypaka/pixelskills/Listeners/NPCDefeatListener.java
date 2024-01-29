@@ -6,7 +6,7 @@ import com.lypaka.pixelskills.Config.ConfigGetters;
 import com.lypaka.pixelskills.Config.SkillGetters;
 import com.lypaka.pixelskills.PixelSkills;
 import com.lypaka.pixelskills.PlayerAccounts.Account;
-import com.lypaka.pixelskills.SkillRegistry.Skill;
+import com.lypaka.pixelskills.Skills.Skill;
 import com.pixelmonmod.pixelmon.api.events.BeatTrainerEvent;
 import com.pixelmonmod.pixelmon.entities.npcs.NPCTrainer;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -49,7 +49,7 @@ public class NPCDefeatListener {
 
         }
 
-        double exp = skill.getSettings().getEXPPerTask();
+        double exp = skill.getEXPPerTask();
         if (exp > 0) {
 
             SkillEXPEvent expEvent = new SkillEXPEvent(player, skill, exp);

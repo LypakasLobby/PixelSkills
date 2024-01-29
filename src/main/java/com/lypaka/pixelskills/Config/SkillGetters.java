@@ -3,6 +3,7 @@ package com.lypaka.pixelskills.Config;
 import com.google.common.reflect.TypeToken;
 import com.lypaka.lypakautils.ConfigurationLoaders.BasicConfigManager;
 import com.lypaka.pixelskills.PixelSkills;
+import com.lypaka.pixelskills.Skills.SkillHandler;
 import ninja.leaping.configurate.objectmapping.ObjectMappingException;
 
 import java.util.HashMap;
@@ -42,7 +43,7 @@ public class SkillGetters {
     public static List<String> gladiatorNPCBlacklist;
     public static List<String> gladiatorPokemonBlacklist;
     public static Map<String, Boolean> gladiatorTaskMap;
-    public static Map<String, Double> gladiatorLevelUpMap = new HashMap<>();;
+    public static Map<String, Double> gladiatorLevelUpMap = new HashMap<>();
 
     public static Map<String, Map<String, Double>> skillLevelUpMaps = new HashMap<>();
 
@@ -54,7 +55,7 @@ public class SkillGetters {
         /** Breeder */
         if (PixelSkills.skillConfigManager.containsKey("Breeder")) {
 
-            bcm = PixelSkills.skillConfigManager.get("Breeder").getConfigManager();
+            bcm = SkillHandler.skillBCMs.get("Breeder");
             hatchingBlacklist = bcm.getConfigNode(0, "Blacklists", "Hatching").getList(TypeToken.of(String.class));
             makingOffspringBlacklist = bcm.getConfigNode(0, "Blacklists", "Making", "Offspring").getList(TypeToken.of(String.class));
             makingParentBlacklist = bcm.getConfigNode(0, "Blacklists", "Making", "Parents").getList(TypeToken.of(String.class));
@@ -67,7 +68,7 @@ public class SkillGetters {
         /** Collector */
         if (PixelSkills.skillConfigManager.containsKey("Collector")) {
 
-            bcm = PixelSkills.skillConfigManager.get("Collector").getConfigManager();
+            bcm = SkillHandler.skillBCMs.get("Collector");
             collectorBlackList = bcm.getConfigNode(0, "Blacklist").getList(TypeToken.of(String.class));
             collectorModifiers = bcm.getConfigNode(0, "Modifiers").getValue(new TypeToken<Map<String, Double>>() {});
             collectorWhiteList = bcm.getConfigNode(0, "Whitelist").getValue(new TypeToken<Map<String, Double>>() {});
@@ -78,7 +79,7 @@ public class SkillGetters {
         /** Darwinist */
         if (PixelSkills.skillConfigManager.containsKey("Darwinist")) {
 
-            bcm = PixelSkills.skillConfigManager.get("Darwinist").getConfigManager();
+            bcm = SkillHandler.skillBCMs.get("Darwinist");
             darwinistBlacklist = bcm.getConfigNode(0, "Blacklist").getList(TypeToken.of(String.class));
             darwinistShinyModifier = bcm.getConfigNode(0, "Shiny-Modifier").getDouble();
             darwinistLevelUpMap = bcm.getConfigNode(1, "Levels").getValue(new TypeToken<Map<String, Double>>() {});
@@ -88,7 +89,7 @@ public class SkillGetters {
         /** Fisherman */
         if (PixelSkills.skillConfigManager.containsKey("Fisherman")) {
 
-            bcm = PixelSkills.skillConfigManager.get("Fisherman").getConfigManager();
+            bcm = SkillHandler.skillBCMs.get("Fisherman");
             fishermanBlacklist = bcm.getConfigNode(0, "Blacklist").getList(TypeToken.of(String.class));
             fishermanRodModifiers = bcm.getConfigNode(0, "Rod-Modifiers").getValue(new TypeToken<Map<String, Double>>() {});
             fishermanShinyModifier = bcm.getConfigNode(0, "Shiny-Modifier").getDouble();
@@ -100,7 +101,7 @@ public class SkillGetters {
         /** Gladiator */
         if (PixelSkills.skillConfigManager.containsKey("Gladiator")) {
 
-            bcm = PixelSkills.skillConfigManager.get("Gladiator").getConfigManager();
+            bcm = SkillHandler.skillBCMs.get("Gladiator");
             gladiatorPokemonModifiers = bcm.getConfigNode(0, "Modifiers").getValue(new TypeToken<Map<String, Double>>() {});
             gladiatorNPCBlacklist = bcm.getConfigNode(0, "NPC-Blacklist").getList(TypeToken.of(String.class));
             gladiatorPokemonBlacklist = bcm.getConfigNode(0, "Pokemon-Blacklist").getList(TypeToken.of(String.class));

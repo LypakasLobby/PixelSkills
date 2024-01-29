@@ -6,7 +6,7 @@ import com.lypaka.pixelskills.Config.SkillGetters;
 import com.lypaka.pixelskills.Listeners.JoinListener;
 import com.lypaka.pixelskills.PixelSkills;
 import com.lypaka.pixelskills.PlayerAccounts.Account;
-import com.lypaka.pixelskills.SkillRegistry.Skill;
+import com.lypaka.pixelskills.Skills.Skill;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -66,7 +66,7 @@ public class SetLevelCommand {
                                                                 }
 
                                                                 Account account = JoinListener.accountMap.get(target.getUniqueID());
-                                                                int maxLevel = SkillGetters.skillLevelUpMaps.get(skill.getSkillName()).size();
+                                                                int maxLevel = SkillGetters.skillLevelUpMaps.get(skill.getSkillID()).size();
                                                                 if (level > maxLevel) {
 
                                                                     c.getSource().sendErrorMessage(FancyText.getFormattedText("&cCannot set level higher than max level!"));
@@ -95,13 +95,13 @@ public class SetLevelCommand {
 
                                                                 } else {
 
-                                                                    neededEXP = SkillGetters.skillLevelUpMaps.get(skill.getSkillName()).get("Level-" + level);
+                                                                    neededEXP = SkillGetters.skillLevelUpMaps.get(skill.getSkillID()).get("Level-" + level);
 
                                                                 }
                                                                 account.setLevel(skill, level);
                                                                 account.setEXP(skill, neededEXP);
-                                                                c.getSource().sendFeedback(FancyText.getFormattedText("&aSuccessfully set " + target.getName() + "'s level in " + skill.getSkillName() + " to " + level + "!"), true);
-                                                                target.sendMessage(FancyText.getFormattedText("&eYour level in " + skill.getSkillName() + " was set to " + level + "."), target.getUniqueID());
+                                                                c.getSource().sendFeedback(FancyText.getFormattedText("&aSuccessfully set " + target.getName() + "'s level in " + skill.getSkillID() + " to " + level + "!"), true);
+                                                                target.sendMessage(FancyText.getFormattedText("&eYour level in " + skill.getSkillID() + " was set to " + level + "."), target.getUniqueID());
                                                                 return 1;
 
                                                             })

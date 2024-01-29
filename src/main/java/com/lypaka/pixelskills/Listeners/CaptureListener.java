@@ -6,7 +6,7 @@ import com.lypaka.pixelskills.Config.ConfigGetters;
 import com.lypaka.pixelskills.Config.SkillGetters;
 import com.lypaka.pixelskills.PixelSkills;
 import com.lypaka.pixelskills.PlayerAccounts.Account;
-import com.lypaka.pixelskills.SkillRegistry.Skill;
+import com.lypaka.pixelskills.Skills.Skill;
 import com.pixelmonmod.pixelmon.api.events.CaptureEvent;
 import com.pixelmonmod.pixelmon.entities.pixelmon.PixelmonEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -31,7 +31,7 @@ public class CaptureListener {
 
         if (SkillGetters.collectorBlackList.contains(pokemon.getPokemonName())) return;
 
-        double exp = skill.getSettings().getEXPPerTask();
+        double exp = skill.getEXPPerTask();
         if (SkillGetters.collectorWhiteList.containsKey(pokemon.getPokemonName())) {
 
             exp = SkillGetters.collectorWhiteList.get(pokemon.getPokemonName());

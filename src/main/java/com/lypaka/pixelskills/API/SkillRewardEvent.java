@@ -1,7 +1,7 @@
 package com.lypaka.pixelskills.API;
 
-import com.lypaka.pixelskills.SkillRegistry.Skill;
-import com.lypaka.pixelskills.SkillRegistry.SkillReward;
+import com.lypaka.pixelskills.Skills.Skill;
+import com.lypaka.pixelskills.Skills.SkillReward;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraftforge.eventbus.api.Cancelable;
 import net.minecraftforge.eventbus.api.Event;

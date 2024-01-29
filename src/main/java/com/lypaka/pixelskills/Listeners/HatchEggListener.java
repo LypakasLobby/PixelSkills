@@ -6,7 +6,7 @@ import com.lypaka.pixelskills.Config.ConfigGetters;
 import com.lypaka.pixelskills.Config.SkillGetters;
 import com.lypaka.pixelskills.PixelSkills;
 import com.lypaka.pixelskills.PlayerAccounts.Account;
-import com.lypaka.pixelskills.SkillRegistry.Skill;
+import com.lypaka.pixelskills.Skills.Skill;
 import com.pixelmonmod.pixelmon.api.events.EggHatchEvent;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -31,7 +31,7 @@ public class HatchEggListener {
 
         if (SkillGetters.hatchingBlacklist.contains(pokemon.getLocalizedName())) return;
 
-        double exp = skill.getSettings().getEXPPerTask();
+        double exp = skill.getEXPPerTask();
         if (SkillGetters.breederHatchingModifiers.containsKey("Alolan")) {
 
             double mod = SkillGetters.breederHatchingModifiers.get("Alolan");
