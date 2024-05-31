@@ -51,8 +51,8 @@ public class SkillHandler {
                     double levelUpChance = bcm.getConfigNode(2, "Rewards", rewardID, "Access", "Level-Up", "Chance").getDouble();
                     List<Integer> guaranteedLevels = bcm.getConfigNode(2, "Rewards", rewardID, "Access", "Level-Up", "Guaranteed-Levels").getList(TypeToken.of(Integer.class));
                     List<String> commands = bcm.getConfigNode(2, "Rewards", rewardID, "Commands").getList(TypeToken.of(String.class));
-                    List<String> levelRequirements = bcm.getConfigNode(2, "Rewards", rewardID, "Requirements").getList(TypeToken.of(String.class));
-                    List<String> permissionRequirements = bcm.getConfigNode(2, "Rewards", rewardID, "Permissions").getList(TypeToken.of(String.class));
+                    List<String> levelRequirements = bcm.getConfigNode(2, "Rewards", rewardID, "Requirements", "Levels").getList(TypeToken.of(String.class));
+                    List<String> permissionRequirements = bcm.getConfigNode(2, "Rewards", rewardID, "Requirements", "Permissions").getList(TypeToken.of(String.class));
                     SkillReward skillReward = new SkillReward(rewardID, expChance, levelUpChance, guaranteedLevels, commands, levelRequirements, permissionRequirements);
                     rewards.add(skillReward);
 

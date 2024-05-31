@@ -265,7 +265,7 @@ public class Account {
                     if (!passesRequirements) break;
                     String[] split = levelRequirement.split(" ");
                     String operator = split[0];
-                    int level = Integer.parseInt(split[1]);
+                    int level = Integer.parseInt(split[1].replace(",", ""));
                     if (operator.equals(">")) {
 
                         if (playerLevel <= level) {

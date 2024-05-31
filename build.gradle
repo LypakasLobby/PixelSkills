@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'com.lypaka'
-version = '1.16.5-6.0.0'
+version = '1.16.5-6.0.2'
 
 java {
     archivesBaseName = 'PixelSkills'

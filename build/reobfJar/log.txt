@@ -1,5 +1,5 @@
-Java Launcher: C:\Program Files\Java\jdk1.8.0_202\bin\java.exe
-Arguments: '--in-jar, C:\Users\ryan9\Documents\GitHub\PixelSkills\build\libs\PixelSkills-1.16.5-6.0.0.jar, --out-jar, C:\Users\ryan9\Documents\GitHub\PixelSkills\build\reobfJar\output.jar, --srg-in, C:\Users\ryan9\Documents\GitHub\PixelSkills\build\createMcpToSrg\output.tsrg, --live'
+Java Launcher: C:\Users\ryan9\.gradle\jdks\temurin-8-amd64-windows\jdk8u372-b07\bin\java.exe
+Arguments: '--in-jar, C:\Users\ryan9\Documents\GitHub\PixelSkills\build\libs\PixelSkills-1.16.5-6.0.2.jar, --out-jar, C:\Users\ryan9\Documents\GitHub\PixelSkills\build\reobfJar\output.jar, --srg-in, C:\Users\ryan9\Documents\GitHub\PixelSkills\build\createMcpToSrg\output.tsrg, --live'
 Classpath:
  - C:\Users\ryan9\.gradle\caches\forge_gradle\maven_downloader\net\md-5\SpecialSource\1.11.0\SpecialSource-1.11.0-shaded.jar
  - C:\Users\ryan9\Documents\GitHub\LIBRARIES\LypakaUtils-1.16.5.jar
