@@ -265,7 +265,30 @@ public class Account {
                     if (!passesRequirements) break;
                     String[] split = levelRequirement.split(" ");
                     String operator = split[0];
-                    int level = Integer.parseInt(split[1].replace(",", ""));
+                    //int level = Integer.parseInt(split[1].replace(",", ""));
+                    int level = -1; // I'm sick of this line erroring out
+                    do {
+
+                        try {
+
+                            level = Integer.parseInt(split[1]
+                                    .replace(",", "")
+                                    .replace("]", "")
+                                    .replace("}", "")
+                                    .replace(".", "")
+                                    .replace(" ", "")
+                                    .replace("[", "")
+                                    .replace("{", "")
+                                    .replace("=", "")
+                            );
+
+                        } catch (NumberFormatException e) {
+
+
+
+                        }
+
+                    } while (level == -1);
                     if (operator.equals(">")) {
 
                         if (playerLevel <= level) {
