@@ -50,6 +50,16 @@ public class SkillHandler {
                     double expChance = bcm.getConfigNode(2, "Rewards", rewardID, "Access", "EXP").getDouble();
                     double levelUpChance = bcm.getConfigNode(2, "Rewards", rewardID, "Access", "Level-Up", "Chance").getDouble();
                     List<Integer> guaranteedLevels = bcm.getConfigNode(2, "Rewards", rewardID, "Access", "Level-Up", "Guaranteed-Levels").getList(TypeToken.of(Integer.class));
+                    if (!bcm.getConfigNode(2, "Rewards", rewardID, "Access", "Level-Up", "Guranateed").isVirtual()) {
+
+                        //Guranateed
+                        List<Integer> fix = bcm.getConfigNode(2, "Rewards", rewardID, "Access", "Level-Up", "Guranateed-Levels").getList(TypeToken.of(Integer.class));
+                        bcm.getConfigNode(2, "Rewards", rewardID, "Access", "Level-Up", "Guaranteed-Levels").setValue(fix);
+                        bcm.getConfigNode(2, "Rewards", rewardID, "Access", "Level-Up", "Guranateed-Levels").setValue(null);
+                        bcm.save();
+                        guaranteedLevels = fix;
+
+                    }
                     List<String> commands = bcm.getConfigNode(2, "Rewards", rewardID, "Commands").getList(TypeToken.of(String.class));
                     List<String> levelRequirements = bcm.getConfigNode(2, "Rewards", rewardID, "Requirements", "Levels").getList(TypeToken.of(String.class));
                     List<String> permissionRequirements = bcm.getConfigNode(2, "Rewards", rewardID, "Requirements", "Permissions").getList(TypeToken.of(String.class));
